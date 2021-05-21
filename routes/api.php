@@ -29,3 +29,9 @@ Route::get('/fail', function () {
     dispatch($job);
     return '失敗するjobの登録を完了しました。';
 });
+
+Route::get('/fat', function () {
+    $job = (new \App\Jobs\FatProcessOne());
+    dispatch($job);
+    return '重いjobを分散し、段階的にdispatchを呼んで処理が段階的に進むjobの登録を完了しました。';
+});
