@@ -23,3 +23,9 @@ Route::get('/job/{id}', function ($data_id) {
     dispatch($job);
     return 'データ'.$data_id.'csv作成の申請を受理しました';
 });
+
+Route::get('/fail', function () {
+    $job = (new \App\Jobs\FailJob());
+    dispatch($job);
+    return '失敗するjobの登録を完了しました。';
+});
