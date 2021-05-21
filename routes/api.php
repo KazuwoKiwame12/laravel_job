@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/job/{id}', function ($data_id) {
+    $job = (new \App\Jobs\CreateCSV($data_id));
+    dispatch($job);
+    return 'データ'.$data_id.'csv作成の申請を受理しました';
+});
